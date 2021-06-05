@@ -2,13 +2,13 @@ import React from 'react'
 
 import Navbar from '../components/Navbar/Navbar'
 
-const Home = () => {
+const About = () => {
   return(
     <div>
       <Navbar />
-      <h1>Palta Store</h1>
+      <h2>Palta Store / About</h2>
     </div>
   )
-}
+} 
 
-export default Home
+export default About
