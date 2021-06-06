@@ -1,14 +1,15 @@
 import React from 'react'
 
 import Navbar from '@components/Navbar/Navbar'
+import Footer from '@components/Footer/Fotter'
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="bg-red-500">
+    <>
       <Navbar />
       {children}
-      <footer>This is the Footer</footer>
-    </div>
+      <Footer />
+    </>
   )
 }
 
