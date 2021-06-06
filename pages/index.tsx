@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from '../components/Navbar/Navbar'
 import Link from 'next/link'
 
 const HomePage = () => {
@@ -16,7 +15,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar />
       <div>Palta Store </div>
       {
         productList && 
