@@ -19,7 +19,7 @@ const HomePage = () => {
       {
         productList && 
         productList.map( item => (
-          <h2 key={item.id} >
+          <h2 className="hover:underline" key={item.id} >
             <Link href={`/product/${item.id}`}>
               <a>{item.name}</a>
             </Link>

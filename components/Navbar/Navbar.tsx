@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 export default function Navbar() {
   return (
-    <nav>
-      <menu>
+    <nav className="my-0 mx-0">
+      <menu className="my-0 mx-0">
         <Link href="/">
           <a>Home</a>
         </Link>
