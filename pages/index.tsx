@@ -1,22 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-
-import ProductListComponent from '@components/ProductList/ProductList'
+import React, {useEffect, useState} from 'react'
+import Link from 'next/link';
+import ProductList from '@components/ProductList/ProductList';
+import Loading from '@components/Loading/Loading';
+import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader';
+import styles from '@styles/pages/Home.module.scss'
 
 const HomePage = () => {
+  const [productList, setProductList] = useState<TProduct[]>([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    window
+      .fetch('/api/avo')
+      .then(response => response.json())
+      .then(({ data }) => {
+        setProductList(data);
+        setLoading(false);
+      });
+  }, []);
 
-  return (
-    <>
-      <section className="mt-16 flex flex-col justify-center items-center">
-        <div className="flex justify-center items-center">
-          <span className=" text-3xl">Palta</span>
-          <Image src="/avocado-icon.png" width="70" height="70" />
-          <span className=" text-3xl">Store</span>
+  return (    
+    <main className={styles.Home}>
+      <div className="container">
+        <KawaiiHeader />        
+        <div className={styles.HomeDescription}>
+          <Link href="/">
+            <a>¿Deberia comer un avo hoy?</a>
+          </Link>
         </div>
-        <a className="mt-8 mb-4 text-blue-500" href="https://www.iprofesional.com/health-tech/324077-por-que-deberias-comer-palta-beneficios-de-este-alimento" target="_blank" rel="noopener noreferrer">¿Deberia comer una Palta hoy?</a>
-      </section>
-      <ProductListComponent />
-    </>
+        {
+          loading ? 
+            <Loading /> : 
+            <ProductList products={productList} />   
+        }        
+      </div>     
+    </main>
   )
 }
 

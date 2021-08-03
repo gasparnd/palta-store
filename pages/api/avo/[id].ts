@@ -1,21 +1,16 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import DB from '@database'
+import {NextApiRequest, NextApiResponse} from "next";
+import DB from '@database';
 
-const getOneAvo = async (req: NextApiRequest, res: NextApiResponse) => {
-  const db = new DB()
-  const id = req.query.id
+const allAvos = async (request: NextApiRequest, response: NextApiResponse) => {
+	const db = new DB();
 
-  const avo = await db.getById(id as string)
+	const id = request.query.id;
 
-  if(!avo) {
-    res.status(404).json({
-      error: 'Avocado not found'
-    })
-  }
-
-  res.status(200).json({ 
-    data: avo
-  })
+	const avo = await db.getById(id as string);
+	// response.statusCode = 200;
+	// response.setHeader('Content-type', 'application/json');
+	// response.end(JSON.stringify({data: entry}));
+	response.status(200).json(avo);
 }
 
-export default getOneAvo
+export default allAvos;

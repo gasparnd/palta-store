@@ -1,16 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Header from '@components/Header/Header';
+import Footer from '@components/Footer/Footer';
 
-import Navbar from '@components/Navbar/Navbar'
-import Footer from '@components/Footer/Fotter'
+const Layout: React.FC = ({ children }) => { //Function Component
+	return (
+		<div>
+			<Header />
+			{children}
+			<Footer />
+		</div>
+	);
+};
 
-const Layout: React.FC = ({ children }) => {
-  return (
-    <>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
-  )
-}
-
-export default Layout
+export default Layout;
